@@ -428,8 +428,7 @@ var Obsidian = {
                         '<span class="language-mark" ref=' + lang + '> <b class="iconfont icon-code" style="line-height: 0.7rem"></b> ' + displayLangText + '</span>');
                 }
             });
-        }
-        ;
+        };
     },
     tocSpy: function (offset) {
         var tocContainer = $("#toc");
