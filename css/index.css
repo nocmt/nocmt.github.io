@@ -704,5 +704,6 @@ img {
 @media screen and (max-width: 1080px) {
   .mask-border::before {
     border: 0.8rem #c2e9fb solid;
+    border-image: linear-gradient(90deg, #ffecd2, #fcb69f) 0.8;
   }
 }
