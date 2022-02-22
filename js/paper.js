@@ -7,6 +7,7 @@
  * @LastEditTime: 2022-02-16 12:18:37
  */
 // dark mode utils
+
 const invertImgs = (function () {
   const invertImg = (img) =>
     (img.style.filter =
@@ -78,3 +79,8 @@ window.addEventListener("DOMContentLoaded", () => {
       });
   })();
 });
+
+const search = () => {
+  const name = document.getElementById("searchWords").value;
+  alert(name);
+};
