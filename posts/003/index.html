@@ -25,7 +25,7 @@
     orderedList: false,
     collapseDepth: 2,
   });
-})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 6.0.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">煮茶忘放糖的博客</a></h1><p>简简单单写点文章</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">Gunicorn+Caddy 部署Django网站</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label><input class="container_search" type="input" id="search" name="search"><label for="search">input</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">Gunicorn+Caddy 部署Django网站</a></h2><span class="post__date">2019-04-06</span><a href="/tags/Django/"><span class="post__tags">#Django</span></a></div></div><div class="article__content"><p><strong>必读说明：</strong></p>
+})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 6.0.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">煮茶忘放糖的博客</a></h1><p>简简单单写点文章</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">Gunicorn+Caddy 部署Django网站</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">Gunicorn+Caddy 部署Django网站</a></h2><span class="post__date">2019-04-06</span><a href="/tags/Django/"><span class="post__tags">#Django</span></a></div></div><div class="article__content"><p><strong>必读说明：</strong></p>
 <ul>
 <li>项目：term</li>
 <li>环境：vcmt</li>
@@ -42,8 +42,8 @@ sudo apt-get dist-upgrade
 </code></pre>
 <p>备注：关于Anconda的使用：<a target="_blank" rel="noopener" href="https://mubu.com/doc/bwPIqW1ln">https://mubu.com/doc/bwPIqW1ln</a></p>
 <p>配置环境变量：</p>
-<p>   export PATH&#x3D;$PATH:&#x2F;root&#x2F;miniconda3&#x2F;bin</p>
-<h1 id="source-x2F-bashrc"><a href="#source-x2F-bashrc" class="headerlink" title="source ~&#x2F;.bashrc"></a>source ~&#x2F;.bashrc</h1><p>更新所有包：</p>
+<p>   export PATH&#x3D;$PATH:&#x2F;root&#x2F;miniconda3&#x2F;bin<br>   source ~&#x2F;.bashrc</p>
+<p>更新所有包：</p>
 <pre><code>conda upgrade --all
 </code></pre>
 <p>创建环境：</p>
@@ -90,6 +90,7 @@ chmod -R u+x caddy
 </code></pre>
 <p>内容：</p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs TXT">域名&#123;<br>        root /home/term<br>        proxy / localhost:8001 &#123;<br>            transparent<br>            except /static /media<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
 <p>备注：配置文件有很多种写法 – <a target="_blank" rel="noopener" href="https://caddyserver.com/docs/http-caddyfile">https://caddyserver.com/docs/http-caddyfile</a></p>
 <p>安装 Gunicorn：</p>
 <pre><code>pip install gunicorn

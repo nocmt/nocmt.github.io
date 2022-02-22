@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>程序员不应该用简书！</title>
+      <link href="/posts/005/"/>
+      <url>/posts/005/</url>
+      
+        <content type="html"><![CDATA[<p>简书的优点：程序员还是挺多的，写的教程质量总体比较好，排版还算OK，编写文章体验不错。</p><p>缺点：首页一堆垃圾文章，广告也多，写的文章有可能被锁定，数据可以一键导出，但图片默认压缩，不自由。</p><p>终究还是 <strong>数据只有放在自己硬盘才是最安全的</strong></p><p>使用简书5年了，发了82篇文章，分享些好的效率软件或者技巧总是会被当成软文锁定！还是会在简书更新一些内容，但主要还是发博客吧。</p><p><img src="/posts/005/2.png" alt="被锁定的文章"></p><p>附录：</p><p><img src="/posts/005/3.jpg" alt="辱骂程序员的文章却不受限制"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常闲聊 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 写作 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>极大提高工作效率，强大的Chrome浏览器扩展插件 -- Omni</title>
+      <link href="/posts/004/"/>
+      <url>/posts/004/</url>
+      
+        <content type="html"><![CDATA[<p>突然发现一个有趣的浏览器插件，简单试用了一下，非常好用。</p><p>下载地址：</p><p>GitHub：<a href="https://github.com/alyssaxuu/omni">https://github.com/alyssaxuu/omni</a><br>Chrome 插件地址：<a href="https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&authuser=0">点击跳转</a><br>Firefox 的插件地址：<a href="https://addons.mozilla.org/en-GB/firefox/addon/omnisearch/">点击跳转</a></p><p>它可以解决的问题：在浏览器中快速搜索到您想要的内容，包括但不限于已打开的标签、书签、历史记录。</p><p>远比浏览器自带的搜索框功能强大，搜索速度非常快，简单易上手。</p><p><img src="/posts/004/2.gif" alt="官方演示"></p><p>以下是它所有的功能：</p><ul><li>切换、打开、关闭和搜索标签：安装后使用 <strong>⌘+Shift+K 或者 Ctrl+Shift+K</strong> 快捷键打开搜索框，直接输入文字就能搜索到内容，上下键切换选项回车或者鼠标点击就可执行动作</li><li>浏览和管理书签：输入 &#x2F;b 自动补全 &#x2F;bookmarks ，然后输入内容即可。</li><li>搜索浏览的历史记录：输入 &#x2F;h 自动补全 &#x2F;history ，然后输入内容即可。</li><li>50 多项提高生产力的措施：输入 &#x2F;a 自动补全 &#x2F;actions ，然后输入内容即可。</li><li>用于过滤和执行更多操作的特殊命令</li><li>与 Notion、Figma、Docs、Asana 的集成……</li><li>静音、固定、书签等操作的快捷方式…</li><li>有助于解决浏览问题的高级设置</li><li>切换黑暗模式</li></ul><p>以上功能全部免费无需登录配置，开箱即用。</p><p>其中高级设置就是一些浏览器支持的功能，都放在里面，方便搜索使用。</p><ul><li>录屏</li><li>打印页面</li><li>返回上一页</li><li>前往下一页</li><li>打开下载页面</li><li>重新加载页面</li><li>打开浏览器设置</li><li>复制当前页面</li><li>关闭浏览器</li><li>清除缓存</li><li>清除 Cookie</li><li>清除浏览历史</li><li>清空已保存的密码</li><li>滚动到页面底部、顶部<br>…</li></ul><p>快去试试吧！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Chrome </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派3B+ 安装 OpenWrt 的简单配置记录</title>
+      <link href="/posts/001/"/>
+      <url>/posts/001/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、下载镜像"><a href="#一、下载镜像" class="headerlink" title="一、下载镜像"></a>一、下载镜像</h3><p>定制固件下载地址：<a href="https://doc.openwrt.cc/2-OpenWrt-Rpi/1-Download/">https://doc.openwrt.cc/2-OpenWrt-Rpi/1-Download/</a></p><p>作者项目地址：<a href="https://github.com/SuLingGG/OpenWrt-Rpi">https://github.com/SuLingGG/OpenWrt-Rpi</a></p><p>像我的型号是 3B+，那就下载 <strong>immortalwrt-bcm27xx-bcm2710-rpi-3-squashfs-sysupgrade.img.gz</strong></p><p>然后解压（像 Mac 的解压命令：<strong>gunzip immortalwrt-bcm27xx-bcm2710-rpi-3-squashfs-sysupgrade.img.gz</strong> ）</p><p><img src="/posts/001/1.png" alt="固件下载页面"></p><h3 id="二、刷写固件"><a href="#二、刷写固件" class="headerlink" title="二、刷写固件"></a>二、刷写固件</h3><p>下载 <a href="https://www.balena.io/etcher/">BalenaEtcher</a>，安装，然后插上 TF 卡转接器，它会自动检测到 USB 设备，点击 Flash，输入当前电脑登录密码就可以了。</p><p><img src="/posts/001/2.png" alt="刷写固件"></p><p>刷写完成后，弹出”U 盘”，取下 TF 卡，装到树莓派中，通电等待 30 秒（不要插网线）。</p><h3 id="三、默认-LAN-口改-WAN-口"><a href="#三、默认-LAN-口改-WAN-口" class="headerlink" title="三、默认 LAN 口改 WAN 口"></a>三、默认 LAN 口改 WAN 口</h3><p>等待 30 秒后，使用你的电脑连接上一个名称为 OpenWrt 的 WIFI，不需要密码。</p><p>连接成功后，浏览器访问：<a href="http://192.168.1.1/">http://192.168.1.1</a></p><p>即可进入 web 控制面板，默认登录账号：<strong>root</strong>，密码：<strong>password</strong>。</p><p><img src="/posts/001/3.png" alt="主页面"></p><p>在 网络 -&gt; 接口总览 可以看到有个默认的 <strong>LAN</strong> 网络，点击右侧修改，可以改成以下的内容（如果你理解就可以修改成其他的）：</p><p><img src="/posts/001/4.png" alt="基本设置"></p><p>然后点击 <strong>高级设置</strong> ，取消勾选 **以太网适配器: “eth0”**，点击保存与应用。</p><p><img src="/posts/001/5.png" alt="高级设置"></p><p>等待刷新，这时候可以重新连接 WIFI，然后 访问 <a href="http://192.168.0.101/">http://192.168.0.101/</a>，如果顺利的话，你会重新进入到管理页面。</p><p>然后在 网络 -&gt; 接口总览 中新增一个接口，配置内容如下：</p><p><img src="/posts/001/6.png" alt="新增网口"></p><p>点击保存，插上网线，然后在系统 -&gt; 重启，点击 <strong>执行重启</strong>，等待重启完成，配置就完成。</p><p>至于 WIFI 的密码设置，您可以在 网络-&gt; 无线中设置，那些都很简单，请多多尝试。</p><p><strong>备注：如果你的有线网络的 IP 网段是 <a href="http://192.168.1.1-255/">http://192.168.1.1-255</a> 可能存在连接问题，请改一下网段。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树莓派 </tag>
+            
+            <tag> OpenWrt </tag>
+            
+            <tag> 软路由 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Gunicorn+Caddy 部署Django网站</title>
+      <link href="/posts/003/"/>
+      <url>/posts/003/</url>
+      
+        <content type="html"><![CDATA[<p><strong>必读说明：</strong></p><ul><li>项目：term</li><li>环境：vcmt</li><li>系统：Debian 9</li><li>工具：PuTTY、FileZilla</li></ul><p>开放22、80、443或者你需要的其他端口</p><p>连接上服务器，Linux操作，更新系统（可选）：</p><pre><code>sudo apt-get updatesudo apt-get dist-upgrade</code></pre><p>安装Miniconda：</p><pre><code>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh &amp;&amp; chmod +x Miniconda3-latest-Linux-x86_64.sh &amp;&amp; bash Miniconda3-latest-Linux-x86_64.sh</code></pre><p>备注：关于Anconda的使用：<a href="https://mubu.com/doc/bwPIqW1ln">https://mubu.com/doc/bwPIqW1ln</a></p><p>配置环境变量：</p><p>   export PATH&#x3D;$PATH:&#x2F;root&#x2F;miniconda3&#x2F;bin<br>   source ~&#x2F;.bashrc</p><p>更新所有包：</p><pre><code>conda upgrade --all</code></pre><p>创建环境：</p><pre><code>conda create -n vcmt</code></pre><p>备注：此处环境名为 vcmt，默认保存的位置： &#x2F;root&#x2F;miniconda3&#x2F;envs&#x2F;vcmt</p><p>进入环境：</p><pre><code>source activate vcmt// 离开环境命令：source deactivate</code></pre><p>此时可以使用FileZilla把项目文件上传到服务器下，目录建议选 home，因为放在别的目录可能有权限问题。</p><p>目前我的位置</p><p><img src="/posts/003/2.png" alt="Gunicorn+Caddy部署Django网站"></p><p>由于以前开发项目时没有使用Anconda，所以只能用pip生成环境依赖了，命令如下：</p><p>生成requirements.txt文件</p><pre><code>pip freeze &gt; requirements.txt</code></pre><p>安装requirements.txt依赖</p><pre><code>pip install -r requirements.txt</code></pre><p>在线运行一下，看会不会报错</p><pre><code>python manage.py runserver 0.0.0.0:80</code></pre><p>少依赖会提示的，安装好就行，如果报别的错，就去解决错误，善用vim</p><p>没问题 Ctrl+C关闭项目</p><p>正式部署时，Debug要关掉</p><p><img src="/posts/003/3.png" alt="Debug"></p><p>同步静态文件：</p><pre><code>python manage.py collectstatic</code></pre><p>先退到 home目录</p><pre><code>cd ..</code></pre><p>下载安装caddy</p><pre><code>wget -c &quot;https://caddyserver.com/download/linux/amd64?license=personal&amp;telemetry=off&quot; -O caddy.tar.gz</code></pre><p>创建caddy文件夹并解压到指定目录：</p><pre><code>mkdir caddytar -zxvf caddy.tar.gz -C caddychmod -R u+x caddy</code></pre><p>在caddy里创建Caddyfile文件：</p><pre><code>vim /caddy/Caddyfile</code></pre><p>内容：</p><figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs TXT">域名&#123;<br>        root /home/term<br>        proxy / localhost:8001 &#123;<br>            transparent<br>            except /static /media<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure><p>备注：配置文件有很多种写法 – <a href="https://caddyserver.com/docs/http-caddyfile">https://caddyserver.com/docs/http-caddyfile</a></p><p>安装 Gunicorn：</p><pre><code>pip install gunicorn</code></pre><p>此处可启动检验（此时当前路径为&#x2F;home&#x2F;term，term为项目名称）：</p><pre><code>// 不在vcmt环境里/root/miniconda3/bin/gunicorn -w 2 -b &quot;127.0.0.1:8001&quot; term.wsgi// 在vcmt环境里gunicorn -w 2 -b &quot;127.0.0.1:8001&quot; term.wsgi</code></pre><p>关于gunicorn的启动参数 – <a href="http://docs.gunicorn.org/en/stable/">http://docs.gunicorn.org/en/stable/</a></p><p>启动以后，我们会发现它在前台，所以安装supervisor，用来管理进程：</p><pre><code>apt-get install supervisor</code></pre><p>添加supervisor配置文件</p><pre><code>vim /etc/supervisor/conf.d/gun.conf</code></pre><p>内容：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Config"># gun为名称<br>[program:gun]<br><br>directory= /home/term/ # 切换路径<br># 感觉不需要，如果启动不了，再改一下吧<br># environment=PATH=/root/miniconda3/envs/vcmt/bin/<br>command=  /root/miniconda3/envs/vcmt/bin/gunicorn -w 2 -b &quot;127.0.0.1:8001&quot; term.wsgi # 启动命令<br>autostart=true  # 自动启动<br>startsecs = 10 # 启动超时<br>autorestart = true # 自动重启<br>startretries=3 # 重启次数<br>user=root # 用户<br>stderr_logfile=/home/gun_err.log # 错误日志<br>stdout_logfile=/home/gun_out.log # 普通日志<br></code></pre></td></tr></table></figure><p>同理，caddy的配置：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Config">[program:caddy]<br><br>command= /home/caddy/caddy -conf=&quot;/home/caddy/Caddyfile&quot;<br>autostart=true<br>startsecs = 10<br>autorestart = true<br>startretries=3<br>user=root<br>stderr_logfile=/home/caddy_err.log<br>stdout_logfile=/home/caddy_out.log<br></code></pre></td></tr></table></figure><p>启动 Gunicorn和Caddy：</p><pre><code>supervisorctl updatesupervisorctl</code></pre><p>报错会有提示，下面这样就是正常的</p><p><img src="/posts/003/4.png" alt="正常运行"></p><p>在这个交互环境下，可以start 、restart、stop 配置名，退出使用quit</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Django教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mycli 安装及简单使用教程</title>
+      <link href="/posts/002/"/>
+      <url>/posts/002/</url>
+      
+        <content type="html"><![CDATA[<p>mycli 是 MySQL，MariaDB 和 Percona 的命令行界面，具有自动完成和语法高亮功能。</p><p>相信看了下面这张图，就足以使你动心，迫不及待就想使用它了。</p><p><img src="/posts/002/1.gif" alt="演示图"></p><hr><h3 id="一、安装-Mycli"><a href="#一、安装-Mycli" class="headerlink" title="一、安装 Mycli"></a>一、安装 Mycli</h3><p>如果你安装了<strong>Python</strong>，那么安装它是十分简单的，首先以管理员权限打开你的<strong>CMD</strong>（即命令行工具），输入以下命令：</p><pre><code>pip install mycli</code></pre><h3 id="二-启动-Mycli"><a href="#二-启动-Mycli" class="headerlink" title="二. 启动 Mycli"></a>二. 启动 Mycli</h3><p>使用 Mycli 连接 MySQL 数据库的方法很简单，和 MySQL 命令启动基本相同。</p><p>在命令行启动数据库，输入：</p><pre><code>net start mysql</code></pre><p>然后连接数据库，输入：</p><pre><code>mycli -u用户名 -p密码</code></pre><p>连接成功，输入几行 MySQL 命令试试，应该就会有提示了，上下键选择，回车确定。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

@@ -80,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })();
 });
 
-const search = () => {
-  const name = document.getElementById("searchWords").value;
-  alert(name);
-};
+// const search = () => {
+//   const name = document.getElementById("searchWords").value;
+//   alert(name);
+// };
