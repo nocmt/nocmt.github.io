@@ -4,23 +4,110 @@
   
     
     <entry>
-      <title>程序员不应该用简书！</title>
-      <link href="/posts/005/"/>
-      <url>/posts/005/</url>
+      <title>Vue3+TS Naive Ul 栅格的用法</title>
+      <link href="/posts/009/"/>
+      <url>/posts/009/</url>
       
-        <content type="html"><![CDATA[<p>简书的优点：程序员还是挺多的，写的教程质量总体比较好，排版还算OK，编写文章体验不错。</p><p>缺点：首页一堆垃圾文章，广告也多，写的文章有可能被锁定，数据可以一键导出，但图片默认压缩，不自由。</p><p>终究还是 <strong>数据只有放在自己硬盘才是最安全的</strong></p><p>使用简书5年了，发了82篇文章，分享些好的效率软件或者技巧总是会被当成软文锁定！还是会在简书更新一些内容，但主要还是发博客吧。</p><p><img src="/posts/005/2.png" alt="被锁定的文章"></p><p>附录：</p><p><img src="/posts/005/3.jpg" alt="辱骂程序员的文章却不受限制"></p>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">n-grid</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">&quot;18 400:12 600:10 800:10 1000:12&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">n-gi</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;6 400:1 600:1 800:2 1000:4&quot;</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;6 400:10 600:8 800:6 1000:4&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;login-main&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">n-gi</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">n-grid</span>&gt;</span><br></code></pre></td></tr></table></figure><p>cols 中 第一个代表默认格数，然后在不同屏幕宽度下显示多少格，400px时总共有12格。</p><p>offset 代表左偏移格数，默认6格，400px时变成占据1格。<br>span 代表自身占据格数，默认6格，400px时变成占据10格。</p><p>在相同宽度情况下：offset+span+右边offset&#x3D;cols，可以达到居中效果。</p>]]></content>
       
       
       <categories>
           
-          <category> 日常闲聊 </category>
+          <category> 技术教程 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 写作 </tag>
+            <tag> Vue3 </tag>
+            
+            <tag> TypeScript </tag>
+            
+            <tag> NaiveUI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue3+TS 任意vue组件中变更NaiveUI 全局组件语言</title>
+      <link href="/posts/008/"/>
+      <url>/posts/008/</url>
+      
+        <content type="html"><![CDATA[<p>上一篇 <a href="https://nocmt.com/posts/007/">《Vue3+TS i18n插件使用与配置》</a> 文章，我们已经有了一个  i18n.global.locale.value 参数，它可以设置和获取当前语言，那么我们可以在NaiveUI 全局配置初始化的时候就赋值，这样就能达到切换页面中自定义文字语言时顺带切换UI组件语言，这也就是为什么执行setLanguage方法的时候会加重新加载页面代码了，如果有更好的实现方法可以在评论区回复，感谢！</p><p>在App.vue文件内设置 NaiveUI 全局配置参数，包括自定义主题样式，默认语言等信息。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue3">&lt;script setup lang=&quot;ts&quot;&gt;<br>// This starter template is using Vue 3 &lt;script setup&gt; SFCs<br>// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup<br><br>import &#123; NConfigProvider, GlobalThemeOverrides, zhCN,enUS,dateZhCN,dateEnUS &#125; from &#x27;naive-ui&#x27;<br><br>import &#123; reactive &#125; from &#x27;vue&#x27;<br>import i18n from &quot;./i18n&quot;;<br><br>const languageDict = reactive(&#123;<br>  &quot;zh-CN&quot;: zhCN,<br>  &quot;en-US&quot;: enUS,<br>&#125;)<br><br>const dateLanguageDict = reactive(&#123;<br>  &quot;zh-CN&quot;: dateZhCN,<br>  &quot;en-US&quot;: dateEnUS,<br>&#125;)<br>// @ts-ignore: 这是官方的错误，本身现在它就是一个ComputedRefImpl类型的参数<br>const locale = languageDict[i18n.global.locale.value as keyof typeof languageDict]<br>// @ts-ignore<br>const dateLanguage = dateLanguageDict[i18n.global.locale.value as keyof typeof dateLanguageDict];<br><br>const themeOverrides: GlobalThemeOverrides = &#123;<br>// 这里是主题配置信息<br>&#125;<br><br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;n-config-provider :theme-overrides=&quot;themeOverrides&quot; :locale=&quot;locale&quot; :date-locale=&quot;dateLanguage&quot;&gt;<br>    &lt;router-view &gt;&lt;/router-view&gt;<br>  &lt;/n-config-provider&gt;<br>&lt;/template&gt;<br><br>&lt;style lang=&quot;scss&quot;&gt;<br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue3 </tag>
+            
+            <tag> TypeScript </tag>
+            
+            <tag> NaiveUI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue3+TS i18n插件使用与配置</title>
+      <link href="/posts/007/"/>
+      <url>/posts/007/</url>
+      
+        <content type="html"><![CDATA[<p>首先安装库：</p><pre><code>npm i vue-i18n@nextnpm i vue-cli-plugin-i18n@next</code></pre><p>vite.config.ts 配置：</p><figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">import</span> &#123;defineConfig&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite&quot;</span><br><span class="hljs-keyword">import</span> vue <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@vitejs/plugin-vue&quot;</span><br><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path&#x27;</span><br><span class="hljs-keyword">import</span> &#123;vueI18n&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@intlify/vite-plugin-vue-i18n&quot;</span><br><br><span class="hljs-comment">// https://vitejs.dev/config/</span><br>export <span class="hljs-keyword">default</span> defineConfig(&#123;<br>   resolve: &#123;<br>       alias: &#123;<br>            <span class="hljs-string">&#x27;vue-i18n&#x27;</span>: <span class="hljs-string">&#x27;vue-i18n/dist/vue-i18n.runtime.esm-bundler.js&#x27;</span><br>       &#125;<br>    &#125;,<br>    plugins: [<br>        vue(),<br>        vueI18n(<br>            &#123;<br>                <span class="hljs-keyword">include</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;./src/i18n/locales/**&#x27;</span>)<br>            &#125;<br>        )<br><span class="hljs-comment">// ... 这里是其他配置</span><br>]<br>&#125;)<br></code></pre></td></tr></table></figure><p>src 目录新增 i18n文件夹，i18n文件夹下新建 index.ts文件和 locales 文件夹</p><figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; createI18n &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-i18n&#x27;</span><br><span class="hljs-keyword">import</span> enUS <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./locales/en-US.json&#x27;</span><br><span class="hljs-keyword">import</span> zhCN <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./locales/zh-CN.json&#x27;</span><br><br><span class="hljs-keyword">type</span> <span class="hljs-title class_">MessageSchema</span> = <span class="hljs-keyword">typeof</span> enUS<br><br><span class="hljs-keyword">const</span> i18n = createI18n&lt;[<span class="hljs-title class_">MessageSchema</span>], <span class="hljs-string">&#x27;en-US&#x27;</span> | <span class="hljs-string">&#x27;zh-CN&#x27;</span>&gt;(&#123;<br>    <span class="hljs-comment">// 默认语言先取自定义的，再取浏览器的，最后默认英文</span><br>    <span class="hljs-attr">locale</span>: <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&quot;locale&quot;</span>) || navigator.<span class="hljs-property">language</span> || <span class="hljs-string">&#x27;en-US&#x27;</span>,<br>    <span class="hljs-attr">legacy</span>: <span class="hljs-literal">false</span>,<br>    <span class="hljs-comment">// allowComposition: true, // 是否允许在 Legacy API 模式下使用 Composition API</span><br>    <span class="hljs-attr">messages</span>: &#123;<br>        <span class="hljs-string">&#x27;en-US&#x27;</span>: enUS,<br>        <span class="hljs-string">&#x27;zh-CN&#x27;</span>: zhCN <span class="hljs-comment">// 可以追加其他语言</span><br>    &#125;<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> i18n<br></code></pre></td></tr></table></figure><p>locales 文件夹下新建 zh-CN.json、en-US.json</p><p>文件内格式要保持一样：</p><p>举例：</p><p>zh-CN.json</p><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;Home&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;首页&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><p>en-US.json</p><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;Home&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Home&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><p>然后在 main.ts 安装插件：</p><figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> i18n <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./i18n&#x27;</span><br>... <br><span class="hljs-comment">// 国际化管理</span><br>app.use(i18n)<br></code></pre></td></tr></table></figure><p>接着就能在vue组件中使用了，使用方式是：</p><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">&lt;script setup lang=<span class="hljs-string">&quot;ts&quot;</span>&gt;<br>import i18n from <span class="hljs-string">&quot;./i18n&quot;</span><br><br>const setLanguage = (locale<span class="hljs-punctuation">:</span> &#x27;zh-CN&#x27; | &#x27;en-US&#x27;) =&gt; <span class="hljs-punctuation">&#123;</span><br>   <span class="hljs-comment">// @ts-ignore， 这是官方的错误，本身现在它就是一个ComputedRefImpl类型的参数</span><br>   if(locale !== i18n.global.locale.value) <span class="hljs-punctuation">&#123;</span><br>      localStorage.setItem(<span class="hljs-string">&quot;locale&quot;</span><span class="hljs-punctuation">,</span> locale)<br>      <span class="hljs-comment">// @ts-ignore</span><br>      i18n.global.locale.value  = locale<br>      <span class="hljs-comment">// 重新加载页面，组件的类型才能生效</span><br>      location.reload()<br>      return <span class="hljs-keyword">true</span> <span class="hljs-comment">// 这里加弹窗也可以</span><br>   <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#123;</span><br>      return <span class="hljs-keyword">false</span><br>   <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br>&lt;/script&gt;<br>&lt;template&gt;<br>   &lt;h1&gt;<span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#123;</span> $t(&#x27;Home&#x27;) <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span>&lt;/h1&gt;<br> &lt;button @click=<span class="hljs-string">&quot;setLanguage(&#x27;zh-CN&#x27;)&quot;</span>&gt;简体中文&lt;/button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure><p>setLanguage方法可以抽离出来放到utils目录中的index里面单独导出，后续作为标准工具。</p><p>下一篇文章说说 NaiveUI全局组件语言的变更。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue3 </tag>
+            
+            <tag> TypeScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue3+TS 解决 app.config.globalProperties 全局变量参数不存在问题</title>
+      <link href="/posts/006/"/>
+      <url>/posts/006/</url>
+      
+        <content type="html"><![CDATA[<p>假设我们在src目录下有一个 utils文件夹，里面有个index.ts文件，定义了自己的一些工具方法，比如：</p><figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">printInfo</span> = (<span class="hljs-params">msg: <span class="hljs-built_in">string</span></span>) =&gt; &#123;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(msg);<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>   printInfo<br>&#125;<br></code></pre></td></tr></table></figure><p>如果想在全局使用，首先肯定是在main.ts中添加：</p><figure class="highlight lasso"><table><tr><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">import</span> utils from <span class="hljs-string">&#x27;./utils&#x27;</span><br><span class="hljs-params">...</span><br><span class="hljs-comment">// 全局属性配置</span><br>app.config.globalProperties.$utils = utils<br><span class="hljs-params">...</span><br></code></pre></td></tr></table></figure><p>然后在某个vue文件中使用：</p><figure class="highlight dust"><table><tr><td class="code"><pre><code class="hljs dust"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123; getCurrentInstance &#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 获取Component实例</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> proxy = <span class="hljs-title function_">getCurrentInstance</span>()?.<span class="hljs-property">proxy</span></span></span><br><span class="language-javascript"><span class="language-xml">proxy?.<span class="hljs-property">$utils</span>.<span class="hljs-title function_">printInfo</span>(<span class="hljs-string">&quot;这是一条消息&quot;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 然后这里就提示错误了：TS2339: Property &#x27;$utils&#x27; does not exist on type &#x27;ComponentPublicInstance</span></span></span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, </span><span class="hljs-template-variable">&#123;&#125;</span><span class="language-xml">, false, ComponentOptionsBase &gt;&#x27;.</span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是一条消息<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></code></pre></td></tr></table></figure><p>解决办法就是添加一个 {文件名称}.d.ts声明文件，添加全局挂载属性：</p><figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">ComponentCustomProperties</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@vue/runtime-core&quot;</span>;<br><br><span class="hljs-keyword">declare</span> <span class="hljs-variable language_">module</span> <span class="hljs-string">&#x27;@vue/runtime-core&#x27;</span> &#123;<br>    <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ComponentCustomProperties</span> &#123;<br>        <span class="hljs-attr">$utils</span>: <span class="hljs-built_in">object</span>; <span class="hljs-comment">// 这里填类型</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">// 必须导出，才能在其他文件中使用</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">ComponentCustomProperties</span>;<br></code></pre></td></tr></table></figure><p>备注：文件名称随意，可以放在src的任意目录下，ts文件已经自动导入了，但因为要编译打包，最好不要和同级目录中已存在的文件名称相同，像我就是改成：extend.d.ts，放在src目录下的，其他全局变量挂载也可以往上追加。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue3 </tag>
+            
+            <tag> TypeScript </tag>
             
         </tags>
       
